@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>CrisisPath DSL: Analiza Dezinformacji</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.3/mermaid.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .mermaid-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🕵️ CrisisPath DSL: Analiza Scenariusza Dezinformacji</h1>
+        <h2>Input: Simple DSL Scenario</h2>
+        <pre><code># Definicja Aktorów
+actor OriginalSource:
+  credibility 0.7
+  reach 10000
+  influence_network SocialMediaInfluencers
+  influence_network NewsOutlets
+
+actor MaliciousAgent:
+  strategy FragmentTruth
+  propagation_speed 0.9
+  narrative_complexity 0.8
+
+# Konfiguracja Kryzysu
+crisis InformationManipulation:
+  trigger partial_truth
+  trigger emotional_exploitation
+  
+  effect reduce_source_credibility
+  effect increase_confusion
+  effect polarize_audience
+
+# Parametry Propagacji
+propagation:
+  decay_rate 0.3
+  
+  amplification_factors emotional_resonance
+  amplification_factors confirmation_bias
+  amplification_factors algorithmic_echo_chambers
+
+# Cele Symulacji
+objectives:
+  minimize truth_spread
+  maximize narrative_confusion
+  optimize emotional_trigger_points</code></pre>
+    </div>
+
+    <div class="dashboard">
+        <div class="card">
+            <h2>🌐 Diagram Propagacji Dezinformacji</h2>
+            <div class="mermaid-container">
+                <div class="mermaid">
+graph TD
+    MA[Malicious Agent] -->|Fragment Truth| OS[Original Source]
+    MA -->|Propagate Narrative| AN[Audience Network]
+    OS -->|Diminishing Credibility| AN
+    AN -->|Amplify Confusion| AN
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Wskaźniki Ryzyka Dezinformacji</h2>
+            <div id="riskChart"></div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Analiza Efektów Kryzysu</h2>
+            <div class="mermaid-container">
+                <div class="mermaid">
+graph LR
+    T1[Partial Truth Trigger] --> E1[Reduce Credibility]
+    T2[Emotional Exploitation] --> E2[Increase Confusion]
+    T2 --> E3[Polarize Audience]
+    
+    E1 --> F[Narrative Fragmentation]
+    E2 --> F
+    E3 --> F
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🚨 Strategie Mitygacji</h2>
+            <div class="mermaid-container">
+                <div class="mermaid">
+graph TD
+    MS[Mitigation Strategy] --> A1[Early Detection]
+    MS --> A2[Network Analysis]
+    MS --> A3[Counter-Narrative]
+    
+    A1 --> B1[Rapid Response]
+    A2 --> B2[Identify Weak Points]
+    A3 --> B3[Restore Credibility]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📈 Analiza Ilościowa</h2>
+        <table style="width:100%; border-collapse: collapse;">
+            <tr>
+                <th style="border: 1px solid #ddd; padding: 8px;">Parametr</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Wartość</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Interpretacja</th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">Wiarygodność Źródła</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">0.7</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">Średnia - możliwa manipulacja</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">Prędkość Propagacji</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">0.9</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">Bardzo wysoka - szybkie rozprzestrzenianie</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">Współczynnik Zaniku</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">0.3</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">Niski - długotrwały wpływ dezinformacji</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Inicjalizacja Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default'
+        });
+
+        // Dane do wykresu ryzyka
+        var data = [{
+            type: 'indicator',
+            mode: 'gauge+number',
+            value: 0.85,
+            title: { text: "Ryzyko Dezinformacji" },
+            gauge: {
+                axis: { range: [0, 1] },
+                bar: { color: "red" },
+                steps: [
+                    { range: [0, 0.3], color: 'green' },
+                    { range: [0.3, 0.7], color: 'yellow' },
+                    { range: [0.7, 1], color: 'red' }
+                ]
+            }
+        }];
+
+        var layout = { 
+            width: 400, 
+            height: 300, 
+            margin: { t: 0, b: 0 } 
+        };
+
+        Plotly.newPlot('riskChart', data, layout);
+    </script>
+</body>
+</html>
